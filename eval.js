@@ -34,7 +34,7 @@ function buildBlobWithScript(script) {
 }
 
 let dragger = document.getElementById("dragbutton");
-dragger.ondragstart = (data) => {
+dragger.ondragstart = async function(data) {
     var url = await buildBlobWithScript(document.querySelector('textarea').value);
     data.dataTransfer.setData('text/plain', [url]);
 }
