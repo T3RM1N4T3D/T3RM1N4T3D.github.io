@@ -33,8 +33,10 @@ function buildBlobWithScript(script) {
     })
 }
 
-let dragger = document.getElementById("dragbutton");
-dragger.ondragstart = async function(data) {
-    var url = await buildBlobWithScript(document.querySelector('textarea').value);
-    data.dataTransfer.setData('text/plain', [url]);
-}
+document.querySelector('button').onclick = async () => {
+	var url = await buildBlobWithScript(document.querySelector('textarea').value);
+  
+  let script = document.createElement("script");
+  script.src = url;
+  document.body.append(script);
+};
