@@ -34,6 +34,5 @@ function buildBlobWithScript(script) {
 }
 document.querySelector('button').onclick = async () => {
     var url = await buildBlobWithScript(document.querySelector('textarea').value);
-    // unbelievable, why can't we just use open
-    await chrome.tabs.create({ url: url })
+    window.open(url);
 };
