@@ -23,9 +23,7 @@ function buildBlobWithScript(script) {
             }
             fs.root.getDirectory('evaluations', { create: true }, async function (entry) {
                 await removeFileInDirectory(entry, 'index.js');
-                await writeFileInDirectory(entry, 'index.js', script);
-                await removeFileInDirectory(entry, 'index.html');
-                var handle = await writeFileInDirectory(entry, 'index.html', fullHTML);
+                var handle = await writeFileInDirectory(entry, 'index.js', script);
                 resolve(handle.toURL());
 
             }, reject)
@@ -35,8 +33,8 @@ function buildBlobWithScript(script) {
 
 document.querySelector('button').onclick = async () => {
 	var url = await buildBlobWithScript(document.querySelector('textarea').value);
-  
-  let script = document.createElement("script");
-  script.src = url;
-  document.body.append(script);
+	  
+	let script = document.createElement("script");
+	script.src = url;
+	document.body.append(script);
 };
